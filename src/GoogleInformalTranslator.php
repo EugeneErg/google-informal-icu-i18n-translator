@@ -4,16 +4,25 @@ declare(strict_types=1);
 
 namespace EugeneErg\TranslateGoogleInformal;
 
+use DateInterval;
 use EugeneErg\ICUMessageFormatParser\Parser;
 use EugeneErg\Translate\DataTransferObjects\Variable;
 use EugeneErg\Translate\Translators\Contracts\TranslatorInterface;
 use EugeneErg\Translate\ValueObjects\Translated;
 use EugeneErg\TranslateGoogleInformal\Client\Client;
 use EugeneErg\TranslateGoogleInformal\Client\ValueObjects\GoogleTranslateType;
+use EugeneErg\TranslateGoogleInformal\Client\ValueObjects\SupportedLanguagesResponse;
+use MessageFormatter;
+use Psr\SimpleCache\CacheInterface;
+use Psr\SimpleCache\InvalidArgumentException;
 
 readonly class GoogleInformalTranslator implements TranslatorInterface
 {
-    public function __construct(private Client $client, private Parser $parser) {}
+    public function __construct(
+        private Client $client,
+        private Parser $parser,
+        private CacheInterface $cache,
+    ) {}
 
     /**
      * @param array<string|Variable> $pattern
@@ -82,7 +91,7 @@ readonly class GoogleInformalTranslator implements TranslatorInterface
             if ('' !== $part) {
                 $result[] = preg_match('{^\{\{_(\d+)_\}\}$}', $part, $matches)
                     ? new Variable((int) $matches[1])
-                    : \MessageFormatter::formatMessage('EN', $part, []);
+                    : MessageFormatter::formatMessage('EN', $part, []);
             }
         }
 
@@ -108,5 +117,20 @@ readonly class GoogleInformalTranslator implements TranslatorInterface
         $countyLanguage = explode('_', $locale, 2);
 
         return $countyLanguage[1] ?? strtolower($locale);
+    }
+
+    /**
+     * @throws InvalidArgumentException
+     */
+    private function getSupportedLanguages(): SupportedLanguagesResponse
+    {
+        if ($this->cache->has('GoogleInformalTranslator:getSupportedLanguages')) {
+            return $this->cache->get('GoogleInformalTranslator:getSupportedLanguages');
+        }
+
+        $result = $this->client->getSupportedLanguages();
+        $this->cache->set('GoogleInformalTranslator:getSupportedLanguages', $result, new DateInterval('P1D'));
+
+        return $result;
     }
 }

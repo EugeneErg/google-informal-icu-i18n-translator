@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace EugeneErg\TranslateGoogleInformal\Client\ValueObjects;
+namespace EugeneErg\GoogleInformalIcuI18nTranslator\Client\ValueObjects;
 
 final readonly class Language
 {

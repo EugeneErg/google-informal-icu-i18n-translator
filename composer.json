@@ -1,5 +1,5 @@
 {
-  "name": "euge-erg/translate-google-informal",
+  "name": "euge-erg/google-informal-icu-i18n-translate",
   "description": "Text translation using multiple neural network APIs",
   "type": "library",
   "license": "MIT",
@@ -10,9 +10,9 @@
   },
   "minimum-stability": "stable",
   "require": {
-    "euge-erg/translate": "^1.0",
     "psr/simple-cache": "^3.0",
-    "ext-intl": "*"
+    "ext-intl": "*",
+    "eugene-erg/icu-i18n-translator": "^1.0"
   },
   "config": {
     "allow-plugins": {

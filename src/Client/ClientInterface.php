@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace EugeneErg\TranslateGoogleInformal\Client;
+namespace EugeneErg\GoogleInformalIcuI18nTranslator\Client;
 
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Message\ResponseInterface;

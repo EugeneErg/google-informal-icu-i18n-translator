@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace EugeneErg\TranslateGoogleInformal;
+namespace EugeneErg\GoogleInformalIcuI18nTranslator;
 
 use DateInterval;
 use EugeneErg\ICUMessageFormatParser\Parser;
-use EugeneErg\Translate\DataTransferObjects\Variable;
-use EugeneErg\Translate\Translators\Contracts\TranslatorInterface;
-use EugeneErg\Translate\ValueObjects\Translated;
-use EugeneErg\TranslateGoogleInformal\Client\Client;
-use EugeneErg\TranslateGoogleInformal\Client\ValueObjects\GoogleTranslateType;
-use EugeneErg\TranslateGoogleInformal\Client\ValueObjects\SupportedLanguagesResponse;
+use EugeneErg\IcuI18nTranslator\DataTransferObjects\Variable;
+use EugeneErg\IcuI18nTranslator\Translators\Contracts\TranslatorInterface;
+use EugeneErg\IcuI18nTranslator\ValueObjects\Translated;
+use EugeneErg\GoogleInformalIcuI18nTranslator\Client\Client;
+use EugeneErg\GoogleInformalIcuI18nTranslator\Client\ValueObjects\GoogleTranslateType;
+use EugeneErg\GoogleInformalIcuI18nTranslator\Client\ValueObjects\SupportedLanguagesResponse;
 use MessageFormatter;
 use Psr\SimpleCache\CacheInterface;
 use Psr\SimpleCache\InvalidArgumentException;
@@ -62,6 +62,9 @@ readonly class GoogleInformalTranslator implements TranslatorInterface
         );
     }
 
+    /**
+     * @throws InvalidArgumentException
+     */
     public function canTranslate(string $toLocale, ?string $fromLocale = null): bool
     {
         // todo cache $this->client->getSupportedLanguages()
@@ -70,7 +73,7 @@ readonly class GoogleInformalTranslator implements TranslatorInterface
         $fromCheck = null === $fromLanguage;
         $toCheck = false;
 
-        foreach ($this->client->getSupportedLanguages()->languages as $language => $options) {
+        foreach ($this->getSupportedLanguages()->languages as $language => $options) {
             $fromCheck = $fromCheck || ($language === $fromLanguage && $options->source);
             $toCheck = $toCheck || ($language === $toLanguage && $options->target);
 

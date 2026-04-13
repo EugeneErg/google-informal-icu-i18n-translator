@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace EugeneErg\TranslateGoogleInformal\Client;
+namespace EugeneErg\GoogleInformalIcuI18nTranslator\Client;
 
-use EugeneErg\TranslateGoogleInformal\Client\ClientInterface as BaseClientInterface;
+use EugeneErg\GoogleInformalIcuI18nTranslator\Client\ClientInterface as BaseClientInterface;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;

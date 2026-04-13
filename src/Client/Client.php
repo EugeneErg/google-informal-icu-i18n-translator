@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace EugeneErg\TranslateGoogleInformal\Client;
+namespace EugeneErg\GoogleInformalIcuI18nTranslator\Client;
 
-use EugeneErg\TranslateGoogleInformal\Client\Exceptions\ClientException;
-use EugeneErg\TranslateGoogleInformal\Client\Exceptions\NetworkException;
-use EugeneErg\TranslateGoogleInformal\Client\Exceptions\ResponseJsonException;
-use EugeneErg\TranslateGoogleInformal\Client\Exceptions\TimeoutException;
-use EugeneErg\TranslateGoogleInformal\Client\ValueObjects\Confidence;
-use EugeneErg\TranslateGoogleInformal\Client\ValueObjects\GoogleTranslateResponse;
-use EugeneErg\TranslateGoogleInformal\Client\ValueObjects\GoogleTranslateType;
-use EugeneErg\TranslateGoogleInformal\Client\ValueObjects\Language;
-use EugeneErg\TranslateGoogleInformal\Client\ValueObjects\Model;
-use EugeneErg\TranslateGoogleInformal\Client\ValueObjects\QualityCheck;
-use EugeneErg\TranslateGoogleInformal\Client\ValueObjects\SupportedLanguagesResponse;
-use EugeneErg\TranslateGoogleInformal\Client\ValueObjects\Translate;
+use EugeneErg\GoogleInformalIcuI18nTranslator\Client\Exceptions\ClientException;
+use EugeneErg\GoogleInformalIcuI18nTranslator\Client\Exceptions\NetworkException;
+use EugeneErg\GoogleInformalIcuI18nTranslator\Client\Exceptions\ResponseJsonException;
+use EugeneErg\GoogleInformalIcuI18nTranslator\Client\Exceptions\TimeoutException;
+use EugeneErg\GoogleInformalIcuI18nTranslator\Client\ValueObjects\Confidence;
+use EugeneErg\GoogleInformalIcuI18nTranslator\Client\ValueObjects\GoogleTranslateResponse;
+use EugeneErg\GoogleInformalIcuI18nTranslator\Client\ValueObjects\GoogleTranslateType;
+use EugeneErg\GoogleInformalIcuI18nTranslator\Client\ValueObjects\Language;
+use EugeneErg\GoogleInformalIcuI18nTranslator\Client\ValueObjects\Model;
+use EugeneErg\GoogleInformalIcuI18nTranslator\Client\ValueObjects\QualityCheck;
+use EugeneErg\GoogleInformalIcuI18nTranslator\Client\ValueObjects\SupportedLanguagesResponse;
+use EugeneErg\GoogleInformalIcuI18nTranslator\Client\ValueObjects\Translate;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\NetworkExceptionInterface;
 use Psr\Http\Client\RequestExceptionInterface;

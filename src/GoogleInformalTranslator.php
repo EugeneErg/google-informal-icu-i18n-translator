@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace EugeneErg\GoogleInformalIcuI18nTranslator;
 
 use DateInterval;
+use EugeneErg\IcuI18nTranslator\TranslatorInterface;
 use EugeneErg\ICUMessageFormatParser\Parser;
 use EugeneErg\IcuI18nTranslator\DataTransferObjects\Variable;
-use EugeneErg\IcuI18nTranslator\Translators\Contracts\TranslatorInterface;
 use EugeneErg\IcuI18nTranslator\ValueObjects\Translated;
 use EugeneErg\GoogleInformalIcuI18nTranslator\Client\Client;
 use EugeneErg\GoogleInformalIcuI18nTranslator\Client\ValueObjects\GoogleTranslateType;
